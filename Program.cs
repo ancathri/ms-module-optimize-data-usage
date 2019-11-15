@@ -22,7 +22,8 @@ namespace ms_module_optimize_data_usage
 
             var graphRequest = client.Users
                                 .Request()
-                                .Select(u => new { u.DisplayName, u.Mail });
+                                .Select(u => new { u.DisplayName, u.Mail })
+                                .Top(15);
 
             var results = graphRequest.GetAsync().Result;
             foreach(var user in results)
