@@ -24,7 +24,8 @@ namespace ms_module_optimize_data_usage
                                 .Request()
                                 .Select(u => new { u.DisplayName, u.Mail })
                                 .Top(15)
-                                .OrderBy("DisplayName desc");
+                                // .OrderBy("DisplayName desc")
+                                .Filter("startsWith(surname,'A') or startsWith(surname,'B') or startsWith(surname,'C')");
 
             var results = graphRequest.GetAsync().Result;
             foreach(var user in results)
