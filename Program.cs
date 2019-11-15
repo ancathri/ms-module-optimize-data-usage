@@ -20,7 +20,9 @@ namespace ms_module_optimize_data_usage
             }
             var client = GetAuthenticatedGraphClient(config);
 
-            var graphRequest = client.Users.Request();
+            var graphRequest = client.Users
+                                .Request()
+                                .Select(u => new { u.DisplayName, u.Mail });
 
             var results = graphRequest.GetAsync().Result;
             foreach(var user in results)
